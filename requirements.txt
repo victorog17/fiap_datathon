@@ -1,0 +1,14 @@
+numpy
+pandas
+scikit-learn
+flask
+streamlit
+requests
+matplotlib
+seaborn
+nltk
+spacy
+gensim
+torch
+transformers
+docker-compose

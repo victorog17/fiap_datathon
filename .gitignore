@@ -136,6 +136,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Folders and Files
+data/
+models/recommender.pkl
+
 # Spyder project settings
 .spyderproject
 .spyproject

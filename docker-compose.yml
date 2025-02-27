@@ -1,11 +1,34 @@
-version: '3'
+version: '3.8'
+
 services:
   api:
     build: .
+    container_name: api_flask
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+
   streamlit:
     build: .
+    container_name: streamlit_app
     ports:
       - "8501:8501"
-    command: streamlit run src/streamlit/app.py
+    depends_on:
+      - api
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: recommendations_db
+    ports:
+      - "5432:5432"
